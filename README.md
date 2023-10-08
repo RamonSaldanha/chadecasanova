@@ -9,12 +9,12 @@ cp .env.example .env
 ```
 
 ```sh
-npm install`
+npm install
 ```
 
 ```sh
 php artisan storage:link
-``
+```
 
 ```sh
 php artisan migrate
