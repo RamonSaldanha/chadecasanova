@@ -5,13 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title>{{ $title ?? 'Page Title' }}</title>
-		<link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+		@vite(['resources/css/app.css', 'resources/sass/app.scss'])
 
 	</head>
 
 	<body>
+		<!-- <livewire:navbar /> -->
 		{{ $slot }}
 	</body>
-	<script src="{{ mix('js/app.js') }}"></script>
+	@vite(['resources/js/app.js'])
 
 </html>

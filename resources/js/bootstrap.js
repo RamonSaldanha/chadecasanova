@@ -9,8 +9,11 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';  // Importando com popper.js
+// import '../sass/app.scss';
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/js/bootstrap.bundle.min.js';  // Importando com popper.js
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

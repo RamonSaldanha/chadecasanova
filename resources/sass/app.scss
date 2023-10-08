@@ -1,0 +1,16 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center !important;
+}
+
+.cover-image {
+  // background-image: url('https://images.unsplash.com/photo-1517245386807-9b4d0dd9e033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+  background-size: contain;
+  background-position: center;
+  height: 200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
