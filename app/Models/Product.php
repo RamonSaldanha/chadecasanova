@@ -14,6 +14,14 @@ class Product extends Model
         'description',
         'price',
         'photo',
-        'slug'
+        'slug',
+        'giver_id',
+        'available',
+        'paid'
     ];
+
+    public function giver()
+    {
+        return $this->belongsTo(Giver::class);
+    }
 }

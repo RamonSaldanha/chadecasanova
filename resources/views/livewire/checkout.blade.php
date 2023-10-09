@@ -11,8 +11,8 @@
 					<p class=""><small class="text-muted">R$ {{ $product->price }}</small></p>
 					<!-- <a  wire:navigate>Início</a> -->
 				</div>
+				<livewire:checkout-form :product="$product" /> 
 			</div>
 		</div>
-
 	</div>
 </div>

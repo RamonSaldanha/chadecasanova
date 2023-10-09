@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h1>Form Product</h1>
+				<h3>Adicione um produto</h3>
 				@if (session('message'))
 				<div class="alert alert-success">
 					{{ session('message') }}
@@ -68,8 +68,14 @@
 					<button class="btn btn-primary" type="submit">Adicionar</button>
 				</form>
 
-				<hr />
 
+				<h3>Todos produtos</h3>
+
+				@if (session('turnAvailable'))
+				<div class="alert alert-success">
+					{{ session('turnAvailable') }}
+				</div>
+				@endif
 				<table class="table">
 					<thead>
 						<tr>
@@ -87,7 +93,10 @@
 							<td>{{ $product->description }}</td>
 							<td>{{ $product->price }}</td>
 							<td>{{ $product->photo }}</td>
-							<td><button wire:click="delete({{ $product->id }})">Delete</button></td>
+							<td class="d-flex">
+								<livewire:modal-edit-product :product="$product" /> 
+								<button class="btn btn-danger ms-2" wire:click="delete({{ $product->id }})">Deletar</button>
+							</td>
 						</tr>
 						@endforeach
 					</tbody>

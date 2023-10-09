@@ -12,8 +12,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // import '../sass/app.scss';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.min.js';  // Importando com popper.js
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';  // Importando com popper.js
 
+import Swal from 'sweetalert2'
+window.Swal = Swal;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

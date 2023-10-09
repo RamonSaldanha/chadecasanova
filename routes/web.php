@@ -8,6 +8,6 @@ use App\Livewire\Checkout;
 Route::get('/', Home::class);
 
  
-Route::get('/form-product', FormProduct::class);
-Route::get('/checkout/{product_slug}', Checkout::class);
+Route::get('/form-product', FormProduct::class)->name('form-product');
+Route::get('/checkout/{product_slug}', Checkout::class)->name('checkout');
 

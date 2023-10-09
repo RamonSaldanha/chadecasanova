@@ -37,6 +37,9 @@
 										<h5 class="card-title">{{ $product->title }}</h5>
 										<p class="card-text text-truncate">{{ $product->description }}</p>
 										<p class="card-text"><small class="text-muted">R$ {{ $product->price }}</small></p>
+										@if($product->giver)
+										<p class="card-text"><small class="text-muted">Presenteado por: {{ $product->giver->fullname }}</small></p>
+										@endif
 										<!-- create wire:navigeate to checkout with product slug title -->
 										<a href="/checkout/{{ $product->slug }}" class="btn btn-primary" wire:navigate>Escolher</a>
 										<!-- <a  wire:navigate>Início</a> -->

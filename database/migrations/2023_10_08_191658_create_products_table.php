@@ -18,6 +18,8 @@ return new class extends Migration
             $table->decimal('price');
             $table->string('slug');
             $table->string('photo');
+            $table->foreignId('giver_id')->nullable()->constrained('givers');
+            $table->boolean('available')->default(true);
             $table->timestamps();
         });
     }
