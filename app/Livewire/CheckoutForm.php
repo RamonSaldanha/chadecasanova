@@ -2,8 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Mail\GiftPurchase;
 use App\Models\Giver;
 use App\Models\Product;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class CheckoutForm extends Component
@@ -43,10 +45,13 @@ class CheckoutForm extends Component
             'terms' => $this->terms,
         ]);
 
+        Mail::to($this->email)->send(new GiftPurchase($giver));
+
         $product = Product::find($this->product_id);
         $product->giver_id = $giver->id;
         $product->available = false;
         $product->save();
+
 
         session()->flash('message', 'Obrigado por presentear o casal!');
         return redirect()->route('checkout', $product->slug);

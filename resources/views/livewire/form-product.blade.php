@@ -2,6 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<div><a href="/" wire:navigate>< voltar</a></div>
 				<h3>Adicione um produto</h3>
 				@if (session('message'))
 				<div class="alert alert-success">
@@ -50,7 +51,7 @@
 							<input class="form-control" id="photo" type="file" wire:model="photo" />
 
 							@if ($photo) 
-								<img src="{{ $photo->temporaryUrl() }}" class="mt-3">
+								<img src="{{ $photo->temporaryUrl() }}" style="max-height: 250px;" class="mt-3">
 							@endif
 					
 							@error('photo')
