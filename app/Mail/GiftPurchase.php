@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Giver;
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -20,6 +21,7 @@ class GiftPurchase extends Mailable
      */
     public function __construct(
         public Giver $giver,
+        public Product $product
     ) {}
 
     /**

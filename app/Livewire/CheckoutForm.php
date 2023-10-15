@@ -45,13 +45,13 @@ class CheckoutForm extends Component
             'terms' => $this->terms,
         ]);
 
-        Mail::to($this->email)->send(new GiftPurchase($giver));
-
+        
         $product = Product::find($this->product_id);
         $product->giver_id = $giver->id;
-        $product->available = false;
+        // $product->available = false;
         $product->save();
-
+        
+        Mail::to($this->email)->send(new GiftPurchase($giver, $product));
 
         session()->flash('message', 'Obrigado por presentear o casal!');
         return redirect()->route('checkout', $product->slug);

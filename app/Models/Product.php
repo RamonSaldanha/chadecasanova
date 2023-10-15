@@ -17,7 +17,9 @@ class Product extends Model
         'slug',
         'giver_id',
         'available',
-        'paid'
+        'paid',
+        'status', // 0 - pending, 1 - paid, 2 - canceled
+        'mercado_pago_url'
     ];
 
     public function giver()

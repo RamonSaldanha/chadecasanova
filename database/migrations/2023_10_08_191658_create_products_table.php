@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('photo');
             $table->foreignId('giver_id')->nullable()->constrained('givers');
             $table->boolean('available')->default(true);
+            $table->integer('paid')->default(0);
+            $table->string('mercado_pago_url')->nullable();
             $table->timestamps();
         });
     }

@@ -11,7 +11,7 @@
     <p>Olá {{ $giver->fullname }},</p>
     <p>Obrigado por comprar conosco! Seu pedido foi confirmado e estamos processando o pagamento.</p>
     <p>Para finalizar a compra, clique no botão abaixo para ser redirecionado para a página de checkout:</p>
-    <a href="[LINK PARA A PÁGINA DE CHECKOUT]" target="_blank"><button>Finalizar Compra</button></a>
+    <a href="{{ route('payment', $product->slug) }}">Finalizar Compra</a>
     <p>Obrigado novamente por escolher nossa loja!</p>
     <p>Atenciosamente,</p>
     <p>[NOME DA LOJA]</p>

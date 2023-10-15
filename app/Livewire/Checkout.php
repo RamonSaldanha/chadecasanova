@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class Checkout extends Component
 {
@@ -23,5 +25,12 @@ class Checkout extends Component
         return view('livewire.checkout', [
             'product' => $product
         ]);
+    }
+
+    public function webhook () {
+
+        // $product = Product::where('slug', $payment['external_reference'])->firstOrFail();
+        // $product->paid = 1;
+        // $product->save();
     }
 }
