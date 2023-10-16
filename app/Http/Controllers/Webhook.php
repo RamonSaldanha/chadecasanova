@@ -36,17 +36,17 @@ class Webhook extends Controller
 			}
 			$product->save();
 
-			$file = fopen('payment-confirm.json', 'w');
+			// $file = fopen('payment-confirm.json', 'w');
 				
-			// fwrite($file, $json);
-			fwrite($file, json_encode(
-				[
-					'product_id' => $json['additional_info']['items'][0]['id'],
-					'status' => $json['status'],
-				]
-			));
+			// // fwrite($file, $json);
+			// fwrite($file, json_encode(
+			// 	[
+			// 		'product_id' => $json['additional_info']['items'][0]['id'],
+			// 		'status' => $json['status'],
+			// 	]
+			// ));
 
-			fclose($file);
+			// fclose($file);
 			
 		} catch (RequestException $e) {
 			echo "Guzzle Error: " . $e->getMessage();

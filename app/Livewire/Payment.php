@@ -60,9 +60,9 @@ class Payment extends Component
 
 			$responseBody = json_decode($response->getBody()->getContents(), true);
 
-			$file = fopen('payment.json', 'w');
-			fwrite($file, json_encode($responseBody));
-			fclose($file);
+			// $file = fopen('payment.json', 'w');
+			// fwrite($file, json_encode($responseBody));
+			// fclose($file);
 
 			$initPoint = $responseBody['init_point'];
 		} catch (RequestException $e) {
