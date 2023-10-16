@@ -45,7 +45,7 @@ class Payment extends Component
 							"category_id" => "home",
 							"quantity" => 1,
 							"currency_id" => "BRL",
-							"unit_price" => $product->price
+							"unit_price" => floatval($product->price)
 						]
 					],
 					"notification_url" => env('MERCADO_PAGO_NOTIFY_URL'),
