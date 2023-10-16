@@ -11,6 +11,19 @@
 				</p>
 			</div>
 			<div class="col-md-8">
+
+				<div class="row row-cols-3">
+					<div class="col">
+						<img src="{{ asset('img/polaroid-1.jpg') }}" class="img-fluid" alt="...">
+					</div>
+					<div class="col">
+						<img src="{{ asset('img/polaroid-2.jpg') }}" class="img-fluid" alt="...">
+					</div>
+					<div class="col">
+						<img src="{{ asset('img/polaroid-3.jpg') }}" class="img-fluid" alt="...">
+					</div>
+				</div>
+
 				<h2 class="my-4">Escolha seu presente</h2>
 
 				<div class="row row-cols-3 g-1">
