@@ -32,8 +32,8 @@ class PaymentConfirmed extends Mailable
     {
         return new Envelope(
             from: new Address(
-                address: 'ramonsaldanhaa@gmail.com',
-                name: 'Ramon Saldanha'
+                address: 'contato@casanovaramonevivi.online',
+                name: 'Ramon e Vivi'
             ),
             subject: 'Pagamento confirmado 🎁',
         );

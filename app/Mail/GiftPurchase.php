@@ -31,7 +31,7 @@ class GiftPurchase extends Mailable
     {
         return new Envelope(
             from: new Address(
-                address: 'noreply@casanovaramonevivi.online',
+                address: 'contato@casanovaramonevivi.online',
                 name: 'Ramon e Vivi'
             ),
             subject: 'Confirmação de Presente 🎁',
