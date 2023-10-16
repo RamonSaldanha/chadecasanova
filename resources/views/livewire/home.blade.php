@@ -1,49 +1,29 @@
 <div>
 	<div class="container">
 		<div class="row d-flex justify-content-center">
-			<div class="col-md-6 py-4">
-				<h1>Chá de casa nova de Ramon e Vivian</h1>
+			<div class="col-md-6">
+				<div class="d-flex justify-content-center">
+					<img src="{{ asset('img/ramon-vivian.png') }}"   style="max-width: 90%" class="img-fluid" alt="...">
+				</div>
+				<h2 class="mt-3">Casa nova, vida nova</h2>
 				<p>
-					🏠✨ Chá de Casa Nova: Ramon & Vivian! ✨🏠
+					Estamos começando uma nova jornada, 
 				</p>
-				<p>
-					Olá, amiguinhos e amiguinhas! 🌟 Ramon e Vivian estão abrindo as portas de seu novo ninho e eles precisam de uma ajudinha para torná-lo o cantinho mais aconchegante e charmoso! 💕🛋
-				</p>
-				<p>
-					Vamos tornar esse lar ainda mais especial? Venha participar deste momento mágico e escolha algo que tenha a carinha deles. Cada detalhe, cada item, será um pedacinho do amor e carinho que temos por esse casal tão querido. 🌼💝
-				</p>
-				<p>
-					Porque casa não é apenas feita de tijolos e cimento, mas principalmente de momentos, risadas e, claro, a companhia incrível de amigos como você! 🏡❤️
-				</p>
-				<p>
-					Participe dessa celebração e deixe o novo lar do Ramon e da Vivian repleto de mimos e amor! 🎁💐
-				</p>
-				<p>
-					Nos vemos lá! 🎉✨
-				</p>
+			</div>
+			<div class="col-md-8">
+				<h2 class="my-4">Escolha seu presente</h2>
 
-				<h4>Escolha seu presente</h4>
-
-				<div class="row row-cols-1 g-4">
+				<div class="row row-cols-3 g-1">
 					@foreach ($products as $product)
 					<div class="col">
-						<div class="card">
-							<div class="row g-0">
-								<div class="col-md-4">
-									<img src="{{ Storage::url($product->photo) }}" class="img-fluid rounded-start" alt="...">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-										<h5 class="card-title">{{ $product->title }}</h5>
-										<p class="card-text text-truncate">{{ $product->description }}</p>
-										<p class="card-text"><small class="text-muted">R$ {{ $product->price }}</small></p>
-										@if($product->giver)
-										<p class="card-text"><small class="text-muted">Presenteado por: {{ $product->giver->fullname }}</small></p>
-										@endif
-										<!-- create wire:navigeate to checkout with product slug title -->
-										<a href="/checkout/{{ $product->slug }}" class="btn btn-primary" wire:navigate>Escolher</a>
-										<!-- <a  wire:navigate>Início</a> -->
-									</div>
+						<div class="card border-0">
+							<img src="{{ Storage::url($product->photo) }}" class="img-fluid" alt="...">
+							<div class="card-body">
+								<div class="card-title fw-bold">{{ $product->title }}</div>
+								{{-- <div class="card-text text-truncate">{{ $product->description }}</div> --}}
+								<p class="card-text">R$ {{ $product->price }}</p>
+								<div class="d-grid gap-2">
+									<a href="/checkout/{{ $product->slug }}" class="btn btn-primary btn-sm" wire:navigate>Presentear</a>
 								</div>
 							</div>
 						</div>

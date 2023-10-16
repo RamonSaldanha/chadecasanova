@@ -1,5 +1,14 @@
 - php 8.1
 
+Para testar o mercado pago use o ngrok e mude o "MERCADO_PAGO_NOTIFY_URL"
+
+```sh
+ngrok http 8000
+```
+
+```sh
+```
+
 ```sh
 composer install
 ```

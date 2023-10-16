@@ -26,11 +26,4 @@ class Checkout extends Component
             'product' => $product
         ]);
     }
-
-    public function webhook () {
-
-        // $product = Product::where('slug', $payment['external_reference'])->firstOrFail();
-        // $product->paid = 1;
-        // $product->save();
-    }
 }

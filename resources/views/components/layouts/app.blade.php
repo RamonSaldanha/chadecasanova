@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		<!-- <livewire:navbar /> -->
+		<livewire:navbar /> 
 		{{ $slot }}
 	</body>
 	@vite(['resources/js/app.js'])

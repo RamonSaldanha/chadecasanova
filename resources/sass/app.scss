@@ -1,7 +1,17 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;700&display=swap');
+
+$font-family-sans-serif: 'Quicksand', sans-serif;
+$headings-font-family: 'Pacifico', cursive;
+$headings-color: #5e602d;
+$line-height-base: 1.75;
+$font-size-base: 1.2rem;
+$bg-color: #ffefd0;
+
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
 h1, h2, h3, h4, h5, h6 {
-  text-align: center !important;
+  text-align: center;
 }
 
 .cover-image {
