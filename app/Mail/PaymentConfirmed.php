@@ -2,17 +2,18 @@
 
 namespace App\Mail;
 
-use App\Models\Giver;
-use App\Models\Product;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Address;
- 
-class GiftPurchase extends Mailable
+
+use App\Models\Giver;
+use App\Models\Product;
+
+class PaymentConfirmed extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,7 +35,7 @@ class GiftPurchase extends Mailable
                 address: 'ramonsaldanhaa@gmail.com',
                 name: 'Ramon Saldanha'
             ),
-            subject: 'Confirmação de Presente 🎁',
+            subject: 'Pagamento confirmado 🎁',
         );
     }
 
@@ -44,7 +45,7 @@ class GiftPurchase extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.gift-purchase',
+            view: 'emails.payment-confirmed',
         );
     }
 

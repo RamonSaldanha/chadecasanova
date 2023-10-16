@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentConfirmed;
 use App\Models\Product;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class Webhook extends Controller
 {
@@ -25,25 +27,31 @@ class Webhook extends Controller
 			
 			$body = $response->getBody();
 			$json = json_decode($body, true);
+			
+			$product = Product::with('giver')->find($json['additional_info']['items'][0]['id']);
 
-			$product = Product::find($json['additional_info']['items'][0]['id']);
-			$product->paid = ($json['status'] == 'approved') ? 1 : 2;
+			if ( $json['status'] == 'approved' ) {
+				Mail::to($product->giver->email)->send(new PaymentConfirmed($product->giver, $product));
+				$product->paid = 2;
+			}
+			$product->save();
 
-			$file = fopen('payment.json', 'w');
-						
-			fwrite($file, $json);
-			// fwrite($file, json_encode(
-			// 	[
-			// 		'product_id' => $json['additional_info']['items'][0]['id'],
-			// 		'status' => $json['status'],
-			// 	]
-			// ));
+			$file = fopen('payment-confirm.json', 'w');
+				
+			// fwrite($file, $json);
+			fwrite($file, json_encode(
+				[
+					'product_id' => $json['additional_info']['items'][0]['id'],
+					'status' => $json['status'],
+				]
+			));
 
 			fclose($file);
 			
 		} catch (RequestException $e) {
 			echo "Guzzle Error: " . $e->getMessage();
 		}
+		
 
 		return response()->json([
 			'success' => true

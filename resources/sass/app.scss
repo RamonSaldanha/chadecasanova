@@ -6,7 +6,8 @@ $headings-font-family: 'Pacifico', cursive;
 $headings-color: #5e602d;
 $line-height-base: 1.75;
 $font-size-base: 1.2rem;
-
+$primary: #5e602d;
+$secondary: #5ce1e5;
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
 h1, h2, h3, h4, h5, h6 {

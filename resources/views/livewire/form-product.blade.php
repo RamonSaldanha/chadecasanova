@@ -2,7 +2,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div><a href="/" wire:navigate>< voltar</a></div>
 				<h3>Adicione um produto</h3>
 				@if (session('message'))
 				<div class="alert alert-success">

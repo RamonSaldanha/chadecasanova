@@ -1,16 +1,16 @@
 <div>
-	<h3>Presenteie este item</h3>
+	<h3 class="mb-4">Presenteie este item</h3>
 	@if (session('message'))
 		<div class="alert alert-success alert-dismissible fade show">
-			{{ session('message') }}
-			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			{!! session('message') !!}
 		</div>
 	@endif
+
 	@if($available)
 	<form wire:submit="save">
 		<div class="mb-3 row">
 			<label for="nomesobrenome" class="col-sm-3 col-form-label">Nome/Sobrenome*</label>
-			<div class="col-sm-9">
+			<div>
 				<input type="text" class="form-control" id="nomesobrenome" wire:model="fullname">
 				@error('fullname')
 					<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
@@ -22,8 +22,8 @@
 		</div>
 		<div class="mb-3 row">
 			<label for="e-mail" class="col-sm-2 col-form-label">E-mail*</label>
-			<div class="col-sm-6">
-				<input type="email" class="form-control" id="e-mail"  wire:model="email">
+			<div>
+				<input type="email" style="max-width: 400px;" class="form-control" id="e-mail"  wire:model="email">
 				@error('email')
 					<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
 						{{ $message }}
@@ -34,8 +34,8 @@
 		</div>
 		<div class="mb-3 row">
 			<label for="whatsapp" class="col-sm-2 col-form-label">Whatsapp*</label>
-			<div class="col-sm-6">
-				<input type="text" class="form-control" id="whatsapp" placeholder="(84) 9 9999-9999" wire:model="whatsapp">
+			<div>
+				<input type="text" style="max-width: 250px;" class="form-control" id="whatsapp" placeholder="(84) 9 9999-9999" wire:model="whatsapp">
 				@error('whatsapp')
 					<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
 						{{ $message }}
@@ -58,7 +58,7 @@
 			<div class="form-check">
 				<input class="form-check-input" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2" wire:model="terms">
 				<label class="form-check-label" for="flexRadioDefault2">
-					Estou ciente que ao me candidatar a este presente, estou assumindo o compromisso de que outra pessoa não poderá presentear com o mesmo item.
+					Estou ciente de que estou assumindo o compromisso de presentear este item.
 				</label>
 				@error('terms')
 					<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">

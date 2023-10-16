@@ -2,15 +2,17 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-6">
-				<div class="cover-image" style="background-image: url('{{ Storage::url($product->photo) }}') ">
+				<div class="d-flex justify-content-center">
+					<img src="{{ Storage::url($product->photo) }}" width="200px;" class="img-fluid" :alt="$product->title">
 				</div>
-			<!-- <img src="{{ Storage::url($product->photo) }}" class="img-fluid rounded-start" alt="..."> -->
-				<div class="">
-					<h5 class="">{{ $product->title }}</h5>
+				<div class="my-4">
+					<div class="fw-bold text-center">{{ $product->title }}</div>
 					<p class="">{{ $product->description }}</p>
-					<p class=""><small class="text-muted">R$ {{ $product->price }}</small></p>
+					<p class="text-center fw-bold text-success">R$ {{ $product->price }}</p>
 					<!-- <a  wire:navigate>Início</a> -->
 				</div>
+			</div>
+			<div class="col-8">
 				<livewire:checkout-form :product="$product" /> 
 			</div>
 		</div>

@@ -49,6 +49,7 @@ class Payment extends Component
 						]
 					],
 					"notification_url" => env('MERCADO_PAGO_NOTIFY_URL'),
+					"auto_return" => "all",
 					"back_urls" => [
 						"success" => env('APP_URL') . '/payment-callback/success/' . $product->slug,
 						"failure" => env('APP_URL') . '/payment-callback/failure/' . $product->slug,
@@ -58,6 +59,11 @@ class Payment extends Component
 			]);
 
 			$responseBody = json_decode($response->getBody()->getContents(), true);
+
+			$file = fopen('payment.json', 'w');
+			fwrite($file, json_encode($responseBody));
+			fclose($file);
+
 			$initPoint = $responseBody['init_point'];
 		} catch (RequestException $e) {
 			echo "Request error: " . $e->getMessage();
@@ -66,6 +72,7 @@ class Payment extends Component
 
 		$product->mercado_pago_url = $initPoint;
 		$product->paid = 1;
+		$product->available = 0;
 		$product->save();
 
 

@@ -53,7 +53,7 @@ class CheckoutForm extends Component
         
         Mail::to($this->email)->send(new GiftPurchase($giver, $product));
 
-        session()->flash('message', 'Obrigado por presentear o casal!');
+        session()->flash('message', 'Obrigado por assumir esse compromisso! <hr /> Você receberá um e-mail com as instruções de confirmação. <strong>Acesse a sua caixa de entrada e siga as instruções do e-mail</strong>. Caso não encontre o e-mail, verifique a sua caixa de spam.');
         return redirect()->route('checkout', $product->slug);
 
     }

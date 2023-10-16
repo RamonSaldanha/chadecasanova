@@ -31,8 +31,8 @@ class ModalEditProduct extends Component
         $product->giver_id = null;
         $product->save();
 
-        $giver = $product->giver;
-        $giver->delete();
+        // $giver = $product->giver;
+        // $giver->delete();
 
         session()->flash('turnAvailable', 'Presente disponível novamente!');
         return redirect()->route('form-product');;        
