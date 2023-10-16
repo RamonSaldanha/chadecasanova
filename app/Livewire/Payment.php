@@ -29,45 +29,38 @@ class Payment extends Component
 		
 		$client = new Client();
 
-		try {
-			$response = $client->post('https://api.mercadopago.com/checkout/preferences', [
-				'headers' => [
-					'Authorization' => 'Bearer ' . env('MERCADO_PAGO_ACCESS_TOKEN'),
-					'Content-Type' => 'application/json'
-				],
-				'json' => [
-					"items" => [
-						[
-							"id" => $product->id,
-							"title" => $product->title,
-							"description" => $product->description,
-							"picture_url" => Storage::url($product->photo),
-							"category_id" => "home",
-							"quantity" => 1,
-							"currency_id" => "BRL",
-							"unit_price" => $product->price
-						]
-					],
-					"notification_url" => env('MERCADO_PAGO_NOTIFY_URL'),
-					"auto_return" => "all",
-					"back_urls" => [
-						"success" => env('APP_URL') . '/payment-callback/success/' . $product->slug,
-						"failure" => env('APP_URL') . '/payment-callback/failure/' . $product->slug,
-						"pending" => env('APP_URL') . '/payment-callback/pending/' . $product->slug
+		$response = $client->post('https://api.mercadopago.com/checkout/preferences', [
+			'headers' => [
+				'Authorization' => 'Bearer ' . env('MERCADO_PAGO_ACCESS_TOKEN'),
+				'Content-Type' => 'application/json'
+			],
+			'json' => [
+				"items" => [
+					[
+						"id" => $product->id,
+						"title" => $product->title,
+						"description" => $product->description,
+						"picture_url" => Storage::url($product->photo),
+						"category_id" => "home",
+						"quantity" => 1,
+						"currency_id" => "BRL",
+						"unit_price" => $product->price
 					]
+				],
+				"notification_url" => env('MERCADO_PAGO_NOTIFY_URL'),
+				"auto_return" => "all",
+				"back_urls" => [
+					"success" => env('APP_URL') . '/payment-callback/success/' . $product->slug,
+					"failure" => env('APP_URL') . '/payment-callback/failure/' . $product->slug,
+					"pending" => env('APP_URL') . '/payment-callback/pending/' . $product->slug
 				]
-			]);
+			]
+		]);
 
-			$responseBody = json_decode($response->getBody()->getContents(), true);
-			dd($responseBody);
-			// $file = fopen('payment.json', 'w');
-			// fwrite($file, json_encode($responseBody));
-			// fclose($file);
+		$responseBody = json_decode($response->getBody()->getContents(), true);
 
-			$initPoint = $responseBody['init_point'];
-		} catch (RequestException $e) {
-			echo "Request error: " . $e->getMessage();
-		}
+		$initPoint = $responseBody['init_point'];
+
 
 
 		$product->mercado_pago_url = $initPoint;
