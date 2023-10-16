@@ -27,6 +27,8 @@ class Payment extends Component
 
 		$product = Product::where('slug', $this->productSlug)->firstOrFail();
 		
+		dd($product);
+
 		$client = new Client();
 
 		try {
