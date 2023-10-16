@@ -59,7 +59,7 @@ class Payment extends Component
 			]);
 
 			$responseBody = json_decode($response->getBody()->getContents(), true);
-
+			dd($responseBody);
 			// $file = fopen('payment.json', 'w');
 			// fwrite($file, json_encode($responseBody));
 			// fclose($file);
