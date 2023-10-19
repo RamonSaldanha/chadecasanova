@@ -65,6 +65,15 @@
 						</div>
 					</div>
 
+					<div x-ref="editor" x-data x-init="
+						const quill = new Quill($refs.editor, { theme: 'snow' });
+						quill.on('text-change', () => {
+							$dispatch('input', quill.root.innerHTML);
+						});
+					">
+
+					</div>
+
 					<button class="btn btn-primary" type="submit">Adicionar</button>
 				</form>
 

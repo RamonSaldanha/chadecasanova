@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title>{{ $title ?? 'Chá de casa nova' }}</title>
+		<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
 		@vite(['resources/css/app.css', 'resources/sass/app.scss'])
 
@@ -21,5 +22,12 @@
 	})
 </script>
 	@vite(['resources/js/app.js'])
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+	<script>
+		var quill = new Quill('#editor', {
+			theme: 'snow'
+		});
+	</script>
 
 </html>
