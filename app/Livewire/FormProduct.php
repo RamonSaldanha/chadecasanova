@@ -19,6 +19,7 @@ class FormProduct extends Component
     public $price;
     #[Rule('image|max:1024|required')]
     public $photo;
+    public $freight_price = 0;
 
     public function render()
     {
@@ -34,13 +35,20 @@ class FormProduct extends Component
       
         $filename = $this->photo->store('photos', 'public');
 
+        // some o valor do frete ao preço do produto e acresça uma taxa de 4 por cento, retorne o valor no formato de um número inteiro (sem casas decimais)
+        $preco = $this->freight_price + $this->price;
+        $preco = $preco + ($preco * 0.04);
+        $preco = round($preco, 0, PHP_ROUND_HALF_UP);
+
+
         Product::create([
             'title' => $this->title,
             'description' => $this->description,
-            'price' => $this->price,
+            'price' => $preco,
             'photo' => $filename,
             'slug' => \Str::slug($this->title)
         ]);
+
 
         session()->flash('message', 'Foto enviada com sucesso!');
 

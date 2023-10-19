@@ -55,7 +55,11 @@
 									<a href="/checkout/{{ $product->slug }}" class="btn btn-primary btn-sm" wire:navigate>Escolher</a>
 								</div>
 								@else
-									<div style="font-size: 1rem; line-height: 1;">Presente dado por: <strong>{{ $product->giver->fullname }}</strong>.</div>
+									@if ($product->paid === 2)
+										<div	div style="font-size: 1rem; line-height: 1;">Presente dado por: <strong>{{ $product->giver->fullname }}</strong>.</div>
+									@else
+										<div	div style="font-size: 1rem; line-height: 1;">Presente reinvidicado por: <strong>{{ $product->giver->fullname }}</strong>.</div>	
+									@endif
 								@endif	
 							</div>
 						</div>

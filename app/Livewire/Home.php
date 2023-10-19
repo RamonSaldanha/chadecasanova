@@ -9,23 +9,17 @@ class Home extends Component
 {
     protected $listeners = ['filterProductsByPrice' => 'applyFilter'];
 
-    public $products = [];
-
-    public function mount() {
-        $this->loadDefaultProducts();
-    }
+    public $maxPriceDefault = 10000;
     
-    public function loadDefaultProducts() {
-        $this->products = Product::where('price', '<=', 10000)->get();
-    }
     public function applyFilter ($filterProductsByPrice) {
-        $this->products = Product::where('price' , '<=', $filterProductsByPrice)->get();
+        $this->maxPriceDefault = $filterProductsByPrice;
     }
 
     public function render()
     {
+        $products = Product::where('price', '<=', $this->maxPriceDefault)->get();
         return view('livewire.home', [
-            'products' => $this->products
+            'products' => $products
         ]);
     }
 }

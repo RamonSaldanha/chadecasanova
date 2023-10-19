@@ -21,23 +21,43 @@
 
 					<div class="mb-3">
 						<label for="description" class="form-label">Descrição</label>
-						<textarea class="form-control" id="description" wire:model="description"></textarea>
+						<div wire:ignore>
+							<div style="height: 140px;" x-ref="editor" x-data x-init="
+								const quill = new Quill($refs.editor, { theme: 'snow' });
+								quill.on('text-change', () => {
+									$wire.set('description', quill.root.innerHTML);
+								});
+							">
+								{!!  $description !!}
+							</div>
+						</div>
 						@error('description')
 						<div class="alert alert-danger mt-2" role="alert">
 							{{ $message }}
 						</div>
 						@enderror
 					</div>
-
-					<div class="mb-3">
-						<label for="price" class="form-label">Preço</label>
-						<input class="form-control" id="price" type="text" placeholder="50,00" wire:model="price" />
-						@error('price')
-						<div class="alert alert-danger mt-2" role="alert">
-							{{ $message }}
+					<div class="row">
+						<div class="col">
+							<label for="price" class="form-label">Preço</label>
+							<input class="form-control" id="price" type="text" placeholder="50.00" wire:model="price" />
+							@error('price')
+							<div class="alert alert-danger mt-2" role="alert">
+								{{ $message }}
+							</div>
+							@enderror
 						</div>
-						@enderror
+						<div class="col">
+							<label for="price" class="form-label">Preço do frete</label>
+							<input class="form-control" id="price" type="text" placeholder="15.00" wire:model="freight_price" />
+							@error('price')
+							<div class="alert alert-danger mt-2" role="alert">
+								{{ $message }}
+							</div>
+							@enderror
+						</div>
 					</div>
+
 					<div
 						x-data="{ uploading: false, progress: 0 }"
 						x-on:livewire-upload-start="uploading = true"
@@ -65,14 +85,6 @@
 						</div>
 					</div>
 
-					<div x-ref="editor" x-data x-init="
-						const quill = new Quill($refs.editor, { theme: 'snow' });
-						quill.on('text-change', () => {
-							$dispatch('input', quill.root.innerHTML);
-						});
-					">
-
-					</div>
 
 					<button class="btn btn-primary" type="submit">Adicionar</button>
 				</form>

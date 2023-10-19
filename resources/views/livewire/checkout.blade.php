@@ -1,5 +1,10 @@
 <div>
 	<div class="container">
+		@if (session('reinvindicado'))
+			<div class="alert alert-success">
+				{!! session('reinvindicado') !!}
+			</div>
+		@endif
 		<div class="row justify-content-center">
 			<div class="col-6">
 				<div class="d-flex justify-content-center">
@@ -7,7 +12,7 @@
 				</div>
 				<div class="my-4">
 					<div class="fw-bold text-center">{{ $product->title }}</div>
-					<p class="">{{ $product->description }}</p>
+					<p class="">{!! $product->description !!}</p>
 					<p class="text-center fw-bold text-success">R$ {{ $product->price }}</p>
 					<!-- <a  wire:navigate>Início</a> -->
 				</div>
