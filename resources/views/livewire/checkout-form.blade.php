@@ -46,7 +46,24 @@
 		</div>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label">Deixe uma mensagem para o casal</label>
-			<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" wire:model="comment"></textarea>
+			<textarea maxlength="200" placeholder="Essa mensagem será exibida na página inicial do site quando confirmamos seu presente :)" class="form-control" id="exampleFormControlTextarea1" rows="3" wire:model="comment"></textarea>
+			{{-- adicione um contador de letras em livewire que se inicia em zero e vai até 200 --}}
+
+			<div class="text-end">
+				Número máximo de letras:
+				<span class="badge bg-secondary">
+					<span id="count">0</span>/200
+				</span>
+			</div>
+			<script>
+				const count = document.getElementById('count');
+				const textarea = document.getElementById('exampleFormControlTextarea1');
+				textarea.addEventListener('input', function() {
+					const target = this.getAttribute('maxlength');
+					const current = this.value.length;
+					count.innerHTML = current;
+				});
+			</script>
 			@error('comment')
 				<div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
 					{{ $message }}
