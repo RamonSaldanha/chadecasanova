@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class ProductsFilter extends Component
 {
-    public $priceRange = 10000; 
+    public $priceRange = 700; 
     public $isCollapsed = true;
 
     public function toggleCollapse() {
