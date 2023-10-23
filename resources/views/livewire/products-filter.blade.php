@@ -11,7 +11,7 @@
     <label for="customRange3" class="form-label fw-bold">Filtre pelo valor</label>
     <div class="row">
       <div class="col-md-8">
-        <input type="range" class="form-range" min="10" max="15000" step="5" id="customRange3" wire:change="updatePriceRange" wire:model.lazy="priceRange"/>
+        <input type="range" class="form-range" min="10" max="700" step="5" id="customRange3" wire:change="updatePriceRange" wire:model.lazy="priceRange"/>
       </div>
       <div class="col-md-12">
         <span style="font-size: .9rem; line-height: 1 !important;">Valor até R$ {{ $priceRange }}</span>
