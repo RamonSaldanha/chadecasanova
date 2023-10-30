@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Product;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -20,6 +21,11 @@ class FormProduct extends Component
     #[Rule('image|max:1024|required')]
     public $photo;
     public $freight_price = 0;
+    public $product_id;
+
+    public function mount( $product_id = null) {
+        $this->product_id = $product_id;
+    }
 
     public function render()
     {
@@ -55,6 +61,24 @@ class FormProduct extends Component
         return redirect()->back(); 
     }
 
+
+    #[On('turn-available')] 
+    public function turnAvailable()
+    {
+        $product = Product::find($this->product_id);
+        dd($product);
+        $product->available = true;
+        $product->giver_id = null;
+        $product->paid = 0;
+        $product->save();
+
+        // $giver = $product->giver;
+        // $giver->delete();
+
+        session()->flash('turnAvailable', 'Presente disponível novamente!');
+        return redirect()->route('form-product');;        
+
+    }
     public function delete($product_id)
     {
 

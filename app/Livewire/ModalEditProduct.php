@@ -19,7 +19,8 @@ class ModalEditProduct extends Component
     {
         $product = Product::with('giver')->find($this->product_id);
         return view('livewire.modal-edit-product', [
-            'product' => $product
+            'product' => $product,
+            'product_id' => $this->product_id
         ]);
     }
 

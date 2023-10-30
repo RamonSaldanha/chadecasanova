@@ -97,26 +97,42 @@
 					{{ session('turnAvailable') }}
 				</div>
 				@endif
-				<table class="table">
+				<table class="table table-sm">
 					<thead>
 						<tr>
-							<th>Title</th>
-							<th>Description</th>
-							<th>Price</th>
 							<th>Photo</th>
+							<th>Title</th>
+							<th>Price</th>
+							<th>Status</th>
 							<th>Deletar</th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach ($products as $product)
 						<tr>
-							<td>{{ $product->title }}</td>
-							<td>{{ $product->description }}</td>
+							<td><img src="{{ \Storage::url($product->photo) }}" width="50px;" alt="..."></td>
+							<td><a  class="d-inline-block text-truncate" style="max-width: 250px;" href="/checkout/{{ $product->slug }}" target="_blank">{{ $product->title }}</a></td>
 							<td>{{ $product->price }}</td>
-							<td>{{ $product->photo }}</td>
+							<td>
+								@if($product->paid === 2)
+									<span class="badge bg-success">Pago</span>
+								@elseif($product->giver && $product->paid !== 2)
+									<span class="badge bg-warning">Reinvidicado</span>
+								@else
+									<span class="badge bg-info">Disponível</span>
+								@endif
+							</td>
 							<td class="d-flex">
-								<livewire:modal-edit-product :product="$product" /> 
-								<button class="btn btn-danger ms-2" wire:click="delete({{ $product->id }})">Deletar</button>
+								@if($product->paid === 2)
+									<a href="https://wa.me/55{{ preg_replace('/[^0-9]/', '', $product->giver->whatsapp) }}?text=Olá, agradecemos muito pelo presente que você nos deu. Logo estaremos mandando uma fotxinha dele e marcando a data para recebê-lo(a) na nossa casinha 😍. Ramon e Vivi" target="_blank" class="btn btn-sm btn-success">
+										<i class="fab fa-whatsapp"></i> Agradecer
+									</a>
+								@elseif($product->giver && $product->paid !== 2)
+									<button type="button" class="btn btn-warning btn-sm" @click="$dispatch('turn-available')">Tornar disponível</button>
+								@else
+									
+								@endif
+								<button class="btn btn-sm btn-danger ms-2" wire:click="delete({{ $product->id }})">Deletar</button>
 							</td>
 						</tr>
 						@endforeach

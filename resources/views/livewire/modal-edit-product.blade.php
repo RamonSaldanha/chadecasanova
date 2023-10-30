@@ -18,9 +18,9 @@
 								<img src="{{ Storage::url($product->photo) }}" width="80px" class="img-fluid rounded-start" alt="...">
 							</div>
 							@if($product->giver)
-							<div class="col-md-12">
-								{{$product->giver->fullname}}
-							</div>
+								<div class="col-md-12">
+									{{$product->giver->fullname}}
+								</div>
 							@else
 							<div class="col-md-12">
 								<p class="text-danger">Este item ainda não foi presenteado</p>
@@ -29,8 +29,15 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						@if($product->giver)
+						@if($product->giver !== null)
 							<button type="button" class="btn btn-success" @click="$dispatch('turn-available')">Tornar disponível</button>
+						@endif
+						{{-- criar dois botões com ícone de whatsapp para enviar uma mensagem de agradecimento pela doação e outra para enviar uma mensagem para perguntar se existe alguma dúvida, já que o produto foi reinvidicado --}}
+						{{$product_id}}
+						@if ($product->giver !== null)
+							<a href="https://wa.me/55{{ preg_replace('/[^0-9]/', '', $product->giver->whatsapp) }}?text=" target="_blank" class="btn btn-success">
+								<i class="fab fa-whatsapp"></i> Agradecer
+							</a>
 						@endif
 					</div>
 				</div>
