@@ -61,12 +61,18 @@ class FormProduct extends Component
         return redirect()->back(); 
     }
 
+    public function turnPaid ($product_id) {
+        $product = Product::find($product_id);
+        $product->paid = 2;
+        $product->save();
 
-    #[On('turn-available')] 
-    public function turnAvailable()
+        session()->flash('message', 'Presente pago!');
+        return redirect()->back();        
+    }
+
+    public function turnAvailable($product_id)
     {
-        $product = Product::find($this->product_id);
-        dd($product);
+        $product = Product::find($product_id);
         $product->available = true;
         $product->giver_id = null;
         $product->paid = 0;

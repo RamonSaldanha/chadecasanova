@@ -18,8 +18,12 @@ class Home extends Component
     public function render()
     {
         $products = Product::where('price', '<=', $this->maxPriceDefault)->get();
+        
+        $productsPaied = Product::where('paid', 2)->with('giver')->get();
+
         return view('livewire.home', [
-            'products' => $products
+            'products' => $products,
+            'productsPaied' => $productsPaied
         ]);
     }
 }

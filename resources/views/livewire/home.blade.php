@@ -35,6 +35,33 @@
 					<img src="{{ asset('img/como-funciona.jpg') }}" width="320px;" class="img-fluid" alt="...">
 				</div>
 
+				<h2 class="my-4">Mensagens de carinho</h2>
+				<section>
+					<div class="container py-5 text-dark">
+						<div class="row d-flex justify-content-center">
+							@foreach ( $productsPaied as $product )
+
+								<div class="d-flex flex-start">
+									<img class="rounded-circle shadow-1-strong me-3"
+										src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($product->giver->email)))}}" alt="avatar" width="65"
+										height="65" />
+									<div class="card w-100">
+										<div class="card-body p-4">
+											<div class="">
+												<div class="fw-bold">{{$product->giver->fullname}}</div>
+												<p>
+													{{$product->giver->comment}}
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							@endforeach
+						</div>
+					</div>
+				</section>	
 				<h2 class="mt-5">Escolha seu presente</h2>
 
 				<div class="filter">

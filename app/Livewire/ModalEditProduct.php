@@ -5,14 +5,27 @@ namespace App\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\Attributes\On; 
+use Livewire\WithFileUploads;
 
 class ModalEditProduct extends Component
 {
+    use WithFileUploads;
     public $product_id;
+    public $title;
 
     public function mount($product)
     {
         $this->product_id = $product->id;
+    }
+
+    public function save() {
+
+        $product = Product::find($this->product_id);
+        $product->title = $this->title;
+        $product->save();
+
+        session()->flash('message', 'Presente editado com sucesso!');
+        return redirect()->route('form-product');
     }
     
     public function render()
@@ -24,19 +37,4 @@ class ModalEditProduct extends Component
         ]);
     }
 
-    #[On('turn-available')] 
-    public function turnAvailable()
-    {
-        $product = Product::with('giver')->find($this->product_id);
-        $product->available = true;
-        $product->giver_id = null;
-        $product->save();
-
-        // $giver = $product->giver;
-        // $giver->delete();
-
-        session()->flash('turnAvailable', 'Presente disponível novamente!');
-        return redirect()->route('form-product');;        
-
-    }
 }
