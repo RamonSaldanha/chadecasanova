@@ -39,18 +39,18 @@
 				<section>
 					<div class="container py-5 text-dark">
 						<div class="row d-flex justify-content-center">
-							@foreach ( $productsPaied as $product )
+							@foreach ( $productsPaied as $productPaied )
 
 								<div class="d-flex flex-start my-2" :wire:key="$product->id">
 									<img class="rounded-circle shadow-1-strong me-3"
-										src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($product->giver->email)))}}" alt="avatar" width="65"
+										src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($productPaied->giver->email)))}}" alt="avatar" width="65"
 										height="65" />
 									<div class="card w-100">
 										<div class="card-body p-4">
 											<div class="">
-												<div class="fw-bold">{{$product->giver->fullname}}</div>
+												<div class="fw-bold">{{$productPaied->giver->fullname}}</div>
 												<p>
-													{{$product->giver->comment}}
+													{{$productPaied->giver->comment}}
 												</p>
 											</div>
 										</div>
