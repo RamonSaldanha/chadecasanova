@@ -41,7 +41,7 @@
 						<div class="row d-flex justify-content-center">
 							@foreach ( $productsPaied as $productPaied )
 
-								<div class="d-flex flex-start my-2" :wire:key="$product->id">
+								<div class="d-flex flex-start my-2" :wire:key="$productPaied->id">
 									<img class="rounded-circle shadow-1-strong me-3"
 										src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($productPaied->giver->email)))}}" alt="avatar" width="65"
 										height="65" />
