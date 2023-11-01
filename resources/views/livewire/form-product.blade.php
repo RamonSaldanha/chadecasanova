@@ -135,7 +135,7 @@
 									
 								@endif
 
-								<livewire:modal-edit-product :product="$product" :key="$product->id" />
+								<livewire:modal-edit-product :product="$product" :wire:key="$product->id" />
 
 								<button class="btn btn-sm btn-danger text-sm p-1" wire:click="delete({{ $product->id }})"
 									x-on:click="if (! confirm('Tem certeza que deseja deletar este produto?')) { return false; }"
