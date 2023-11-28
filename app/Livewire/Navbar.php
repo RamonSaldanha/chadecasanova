@@ -6,9 +6,9 @@ use Livewire\Component;
 
 class Navbar extends Component
 {
-    public function render()
-    {
-        return <<<'HTML'
+  public function render()
+  {
+    return <<<'HTML'
           <div>
             <div class="container">
               <ul class="navbar-nav">
@@ -23,14 +23,14 @@ class Navbar extends Component
               </ul>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
-              <div class="container p-0 justify-content-center">
+              <div class="container p-0 mb-4 justify-content-center">
                 <a class="navbar-brand" href="/" class="nav-link"  wire:navigate>
-                  <img src="{{ asset('img/logotipo.png') }}" alt="Logo" width="250">
+                  <img src="{{ asset('img/logotipo.png') }}" alt="Logo" width="420">
                 </a>
               </div>
             </nav>
 
           </div>
         HTML;
-    }
+  }
 }

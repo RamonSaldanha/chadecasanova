@@ -3,39 +3,71 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-md-6">
 				<div class="d-flex justify-content-center">
-					<img src="{{ asset('img/ramon-vivian.png') }}"   style="max-width: 90%" class="img-fluid" alt="...">
+					<img src="{{ asset('img/raquel-xand.png') }}"   style="max-width: 80%" class="img-fluid" alt="...">
 				</div>
 			</div>
 			<div class="col-md-8">
-				<h2 class="my-4">Casa nova, vida nova</h2>
+				<h1 class="my-4">Casa nova, vida nova</h1>
 
 				<p>Olá, queridos amigos e familiares!</p>
 
-				<p>Bem-vindos ao chá da nossa nova casinha! 🏡 Depois de aventuras acadêmicas e profissionais, estamos prontos para mais uma: criar nosso lar. E, ah, sobre o casamento? Está no radar, prometemos avisar assim que soubermos a data! 😂</p>
+				<p>Bem vindos ao chá da nossa casa nova 🥰 Como vocês sabem em janeiro iniciaremos uma nova etapa em nossas vidas, estaremos nós mudando para nossa casinha e criando um espaço de muito amor e alegria 🥰</p>
 
-				<p>Cada presente selecionado não só ajudará a decorar, mas trará um pedacinho da essência de cada um de vocês para o nosso espaço. Esperamos que possam nos ajudar a tornar este lugar especial.</p>
+				<p>Gostaríamos de contar com vocês, para juntos montarmos nosso cantinho, e cada presente será uma alegria imensa para nós, além de também ter um pedacinho de cada um de vocês juntos a nós 🥰</p>
 
-				<p>Com carinho e gratidão,<br>Ramon & Vivian</p>
+				<p>Obrigada por fazerem parte dessa nossa nova etapa 🥰</p>
 
-				<div class="row row-cols-3 my-5">
-					<div class="col">
-						<img src="{{ asset('img/polaroid-1.jpg') }}" class="img-fluid" alt="...">
+				<p>Com carinho e gratidão,<br>Raquel, Alexandre, Alice e Alex que está por vim</p>
+
+				<div class="my-5">
+					<div id="carouselExample" class="carousel slide">
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<div class="row row-cols-3 g-2">
+									<div class="col">
+										<img src="{{ asset('img/1-_1_.webp') }}" class="img-fluid" alt="...">
+									</div>
+									<div class="col">
+										<img src="{{ asset('img/2-_1_.webp') }}" class="img-fluid" alt="...">
+									</div>
+									<div class="col">
+										<img src="{{ asset('img/3-_1_.webp') }}" class="img-fluid" alt="...">
+									</div>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<div class="row row-cols-3 g-2">
+									<div class="col">
+										<img src="{{ asset('img/4-_1_.webp') }}" class="img-fluid" alt="...">
+									</div>
+									<div class="col">
+										<img src="{{ asset('img/5-_1_.webp') }}" class="img-fluid" alt="...">
+									</div>
+									<div class="col">
+										<img src="{{ asset('img/6-_1_.webp') }}" class="img-fluid" alt="...">
+									</div>
+								</div>
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
 					</div>
-					<div class="col">
-						<img src="{{ asset('img/polaroid-2.jpg') }}" class="img-fluid" alt="...">
-					</div>
-					<div class="col">
-						<img src="{{ asset('img/polaroid-3.jpg') }}" class="img-fluid" alt="...">
-					</div>
+
 				</div>
 
-				<h2 class="my-4">Como funciona?</h2>
+				<h1 class="my-4">Como funciona?</h1>
 
 				<div class="d-flex justify-content-center my-5">
 					<img src="{{ asset('img/como-funciona.jpg') }}" width="320px;" class="img-fluid" alt="...">
 				</div>
 
-				<h2 class="my-4">Mensagens de carinho</h2>
+				<h1 class="my-4">Mensagens de carinho</h1>
 				<section>
 					<div class="container py-5 text-dark">
 						<div class="row d-flex justify-content-center">
@@ -61,7 +93,7 @@
 						</div>
 					</div>
 				</section>	
-				<h2 class="mt-5">Escolha seu presente</h2>
+				<h1 class="mt-5">Escolha seu presente</h1>
 
 				<div class="filter">
 					<livewire:products-filter />
